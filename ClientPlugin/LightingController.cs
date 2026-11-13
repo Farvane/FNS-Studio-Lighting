@@ -209,13 +209,13 @@ internal sealed class LightingController : IDisposable
             }
             if (service is null)
             {
-                Log.Default.WriteLine(Label + "skip: renderer settings service not available");
+                SetStatus("Inactive: renderer settings service is not available");
                 return;
             }
             var active = Member(service, "_activeFrameConfig");
             if (active is null)
             {
-                Log.Default.WriteLine(Label + "skip: no active frame configuration");
+                SetStatus("Inactive: renderer frame configuration is not available");
                 return;
             }
 
@@ -399,6 +399,7 @@ internal sealed class LightingController : IDisposable
     public void Dispose()
     {
         _enabled = false;
+        _supported = false;
         _lastPublisher = null;
         _lastArgs = null;
         Restore("plugin unload");
