@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
 using HarmonyLib;
 using Keen.Game2.Client.UI.Library;
 using Keen.VRage.Core;
@@ -46,9 +45,10 @@ public sealed class Plugin : IPlugin, IDisposable
             var engine = Singleton<VRageCore>.Instance?.Engine;
             var appType = AccessTools.TypeByName("Keen.Game2.GameAppComponent");
             if (engine is null || appType is null) return;
-            var get = engine.GetType().GetMethods().Single(method => method.Name == "Get" &&
+            var get = AccessTools.FirstMethod(engine.GetType(), method => method.Name == "Get" &&
                 method.IsGenericMethodDefinition && method.GetGenericArguments().Length == 1 &&
-                method.GetParameters().Length == 1);
+                method.GetParameters().Length == 1)
+                ?? throw new InvalidOperationException("Engine component lookup is unavailable");
             var app = get.MakeGenericMethod(appType).Invoke(engine, new object[] { default(StringId) });
             var ui = AccessTools.Method(appType, "GetSharedUI")?.Invoke(app, null) as SharedUIComponent;
             if (ui is null) return;
