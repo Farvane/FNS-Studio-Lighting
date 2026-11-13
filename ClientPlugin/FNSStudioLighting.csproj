@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>FNSStudioLighting</AssemblyName>
+    <Version>0.1.0</Version>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony" Version="2.4.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <GameReference Include="Avalonia.Base;Avalonia.Controls;Game2.Client;Game2.Simulation;VRage.Core;VRage.Library;VRage.UI;VRage.UI.Shared;VRage.Input;VRage.DCS" />
+    <Reference Include="@(GameReference)">
+      <HintPath>$(Game2Path)/%(Identity).dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <Target Name="VerifyGamePath" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(Game2Path)/VRage.Core.dll')" Text="Supply -p:Game2Path=your installed SE2 Game2 directory" />
+  </Target>
+</Project>
