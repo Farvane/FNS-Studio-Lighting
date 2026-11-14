@@ -15,6 +15,9 @@ internal sealed class LightingController : IDisposable
 {
     private const string Label = "[FNS Studio Lighting] ";
     internal const string OwnerId = "farvane.fns-studio-lighting";
+    private const float DirectionalLightIntensity = 12f;
+    private const float IndirectLightDiffuseFactor = 1.1f;
+    private const ulong AmbientLightColor = 0xFF808080UL;
     private static readonly Guid FnsSkybox = new("121672c3-c988-4357-8883-4ec2983d9001");
     private const BindingFlags All = BindingFlags.Instance |
         BindingFlags.Public | BindingFlags.NonPublic;
@@ -229,10 +232,12 @@ internal sealed class LightingController : IDisposable
             });
             UpdateSection(profile, "Light", section =>
             {
-                Set(section, "DirLightIntensity", 40);
-                Set(section, "IndirectLightDiffuseFactor", 1.1f);
+                // Keep a subtle key light for shape while neutral ambient fill
+                // reduces orientation-dependent hull color changes.
+                Set(section, "DirLightIntensity", DirectionalLightIntensity);
+                Set(section, "IndirectLightDiffuseFactor", IndirectLightDiffuseFactor);
                 UpdateSection(section, "AmbientLightColor", color =>
-                    Set(color, "PackedValue", 4284506208UL));
+                    Set(color, "PackedValue", AmbientLightColor));
             });
             UpdateSection(profile, "Shadow", section =>
                 Set(section, "EnableDirectionalLightShadows", false));
@@ -254,7 +259,7 @@ internal sealed class LightingController : IDisposable
             if (!ReferenceEquals(Member(service, "_activeFrameConfig"), profile))
                 throw new InvalidOperationException("Active frame readback differs from POC profile");
             Log.Default.WriteLine(Label +
-                "APPLIED in memory (SunDisc=false, DirLightIntensity=40, shadows=false, eye adaptation=false, bloom=false)");
+                "APPLIED in memory (SunDisc=false, DirLightIntensity=12, AmbientLightColor=#808080, shadows=false, eye adaptation=false, bloom=false)");
             SetStatus("Applied: FNS studio lighting");
         }
         catch (Exception ex)

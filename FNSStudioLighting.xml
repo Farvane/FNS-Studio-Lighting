@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PluginData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GitHubPlugin">
+  <FriendlyName>FNS Studio Lighting</FriendlyName>
+  <Author>Farvane</Author>
+  <Tooltip>Neutral inspection lighting for the FNS Design Range.</Tooltip>
+  <Description>Applies a reversible, local-client studio profile only while the FNS Design Range skybox is active. Reduces directional lighting, adds neutral ambient fill, disables harsh directional shadows and bloom, and keeps exposure stable for inspecting spacecraft geometry and hull colors.</Description>
+  <Runtimes>CoreCLR</Runtimes>
+  <Platforms>Windows</Platforms>
+</PluginData>

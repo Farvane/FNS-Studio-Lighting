@@ -3,7 +3,8 @@
 **v0.1.0 preview** — optional Pulsar Modern client plugin for Space Engineers 2.
 
 Applies neutral studio lighting while the FNS Design Range skybox is active:
-sun disc off, reduced directional shadows, fixed exposure and bloom off.
+sun disc off, a subdued directional key with neutral ambient fill, directional
+shadows off, fixed exposure and bloom off.
 The companion changes local rendering, not gameplay or saved world data.
 
 Requires **Pulsar Modern**, **SE2 4.0.0.3169** and the separate **FNS Design
@@ -14,8 +15,10 @@ not validated. Every player who wants these lighting changes needs the plugin.
 ## Install
 
 1. Install Pulsar from https://github.com/SpaceGT/Pulsar/releases and run Modern.
-2. Close SE2/Pulsar. Extract `FNSStudioLighting.dll` from the release ZIP into
-   the existing `Modern/Local` directory under your Pulsar installation.
+2. Close SE2/Pulsar. Extract `FNSStudioLighting.dll` and
+   `FNSStudioLighting.xml` from the release ZIP into the existing
+   `Modern/Local` directory under your Pulsar installation. The XML supplies
+   the friendly name and description shown by Pulsar.
 3. Disable the old experimental `FNSStudioLightingPOC` plugin if installed.
 4. Enable **FNSStudioLighting** in your Pulsar profile and launch SE2.
 5. Open the companion's settings from the Pulsar plugin menu, select **Enable
@@ -54,5 +57,14 @@ Requires the installed game assemblies and .NET 10 SDK:
 Builds a Release DLL and documentation package under `artifacts/`.
 No automatic deployment or publishing. Source is MIT licensed; the skybox
 artwork retains its separate license. See `THIRD-PARTY-NOTICES.md`.
+
+For repeatable in-game review, place white, black, neutral gray, OPC orange
+(`#E96512`), FNS blue (`#3584C4`) and FNS green (`#42B77B`) armor on one test
+assembly. Keep the camera, graphics options and exposure conditions fixed;
+capture vanilla, then studio-lighting views at 0, 90, 180 and 270 degrees to
+the sun. Compare orientation-to-orientation brightness, retained paint
+saturation, white clipping, dark-surface detail and whether enough subtle
+shading remains to read the geometry. Visual calibration still requires SE2;
+the build cannot establish that the profile is perceptually correct.
 
 This is a community plugin, not an official Keen Software House product.

@@ -11,7 +11,7 @@ $output = Join-Path $PSScriptRoot 'artifacts\v0.1.0'
 $null = New-Item -ItemType Directory -Path $output -Force
 $dll = Join-Path $PSScriptRoot 'ClientPlugin\bin\Release\net10.0\FNSStudioLighting.dll'
 $packageFiles = @()
-foreach ($file in @($dll, (Join-Path $PSScriptRoot 'README.md'), (Join-Path $PSScriptRoot 'LICENSE'), (Join-Path $PSScriptRoot 'THIRD-PARTY-NOTICES.md'))) {
+foreach ($file in @($dll, (Join-Path $PSScriptRoot 'FNSStudioLighting.xml'), (Join-Path $PSScriptRoot 'README.md'), (Join-Path $PSScriptRoot 'LICENSE'), (Join-Path $PSScriptRoot 'THIRD-PARTY-NOTICES.md'))) {
     $destination = Join-Path $output (Split-Path -Leaf $file)
     Copy-Item -LiteralPath $file -Destination $destination -Force
     $packageFiles += $destination
