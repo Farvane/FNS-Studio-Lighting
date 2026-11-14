@@ -228,7 +228,7 @@ internal sealed class LightingController : IDisposable
             {
                 Set(section, "SunDisc", false);
                 Set(section, "SunDiscIntensity", 0);
-                Set(section, "SkyboxBrightness", 0.65f);
+                Set(section, "SkyboxBrightness", 0.75f);
             });
             UpdateSection(profile, "Light", section =>
             {
