@@ -16,7 +16,7 @@ internal sealed class LightingController : IDisposable
     private const string Label = "[FNS Studio Lighting] ";
     internal const string OwnerId = "farvane.fns-studio-lighting";
     private const float DirectionalLightIntensity = 10f;
-    private const float IndirectLightDiffuseFactor = 1.6f;
+    private const float IndirectLightDiffuseFactor = 2.0f;
     private const ulong AmbientLightColor = 0xFFC0C0C0UL;
     private static readonly Guid FnsSkybox = new("121672c3-c988-4357-8883-4ec2983d9001");
     private const BindingFlags All = BindingFlags.Instance |
@@ -259,7 +259,7 @@ internal sealed class LightingController : IDisposable
             if (!ReferenceEquals(Member(service, "_activeFrameConfig"), profile))
                 throw new InvalidOperationException("Active frame readback differs from POC profile");
             Log.Default.WriteLine(Label +
-                "APPLIED in memory (SunDisc=false, DirLightIntensity=10, IndirectLightDiffuseFactor=1.6, AmbientLightColor=#C0C0C0, shadows=false, eye adaptation=false, bloom=false)");
+                "APPLIED in memory (SunDisc=false, DirLightIntensity=10, IndirectLightDiffuseFactor=2.0, AmbientLightColor=#C0C0C0, shadows=false, eye adaptation=false, bloom=false)");
             SetStatus("Applied: FNS studio lighting");
         }
         catch (Exception ex)
