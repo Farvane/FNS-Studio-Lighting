@@ -53,8 +53,8 @@ internal sealed class LightingScreen : ScreenView
         buttons.Children.Add(apply);
         buttons.Children.Add(close);
         var panel = new StackPanel { Margin = new Thickness(30), Spacing = 22 };
-        panel.Children.Add(new TextBlock { Text = "FNS Design Range — Studio Lighting", FontSize = 25, TextWrapping = TextWrapping.Wrap });
-        panel.Children.Add(new TextBlock { Text = "v0.1.0 preview • SE2 4.0.0.3169 • local-client rendering", TextWrapping = TextWrapping.Wrap });
+        panel.Children.Add(new TextBlock { Text = "[FNS] GRIDWORX - Studio Lighting", FontSize = 25, TextWrapping = TextWrapping.Wrap });
+        panel.Children.Add(new TextBlock { Text = "v1.0.0 • SE2 4.0.0.3169 • local-client rendering", TextWrapping = TextWrapping.Wrap });
         panel.Children.Add(_status);
         panel.Children.Add(_enabled);
         panel.Children.Add(new TextBlock
@@ -66,10 +66,13 @@ internal sealed class LightingScreen : ScreenView
         panel.Children.Add(_feedback);
         var border = new Border
         {
-            Width = 720, MaxHeight = 720,
-            HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center,
+            Width = 720,
+            MaxHeight = 720,
+            HorizontalAlignment = HorizontalAlignment.Center,
+            VerticalAlignment = VerticalAlignment.Center,
             Background = new SolidColorBrush(Color.FromRgb(23, 31, 39)),
-            BorderBrush = new SolidColorBrush(Color.FromRgb(66, 82, 96)), BorderThickness = new Thickness(1),
+            BorderBrush = new SolidColorBrush(Color.FromRgb(66, 82, 96)),
+            BorderThickness = new Thickness(1),
             Child = new ScrollViewer { Content = panel }
         };
         var overlay = new Grid { Background = new SolidColorBrush(Color.FromArgb(160, 0, 0, 0)) };

@@ -80,7 +80,7 @@ internal sealed class LightingController : IDisposable
             }
             _supported = true;
             SetStatus(_enabled ? "Waiting for the FNS Design Range skybox" : "Disabled in settings");
-            Log.Default.WriteLine(Label + "READY v0.1.0; renderer=4.0.0.3169; lifecycle=disconnect+exit");
+            Log.Default.WriteLine(Label + "READY v1.0.0; renderer=4.0.0.3169; lifecycle=disconnect+exit");
         }
         catch (Exception ex)
         {

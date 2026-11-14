@@ -1,6 +1,6 @@
-# FNS Design Range — Studio Lighting
+# \[FNS\] GRIDWORX - Studio Lighting
 
-**v0.1.0 preview** — optional Pulsar Modern client plugin for Space Engineers 2.
+**v1.0.0** — optional Pulsar Modern client plugin for Space Engineers 2.
 
 Applies neutral studio lighting while the FNS Design Range skybox is active:
 sun disc off, a subdued directional key with neutral ambient fill, directional
