@@ -12,6 +12,12 @@ Range — Skybox** Workshop item. Other renderer versions are disabled until
 validated. Windows is the release test platform; multiplayer and Linux are
 not validated. Every player who wants these lighting changes needs the plugin.
 
+## Other FNS plugins
+
+`StudioLightingBridge` (public static) exposes `Enabled` and `Toggle()` so
+FNS Build Tools' radial menu can switch this plugin on or off. Other plugins find
+it by type name at runtime, with no assembly reference. Nothing else is exposed.
+
 ## Install
 
 1. Install Pulsar from https://github.com/SpaceGT/Pulsar/releases and run Modern.

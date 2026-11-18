@@ -36,6 +36,7 @@ public sealed class Plugin : IPlugin, IDisposable
             _startupError = "Unavailable: settings could not be loaded (" + error.GetType().Name + ")";
             Log.Default.WriteLine("[FNS Studio Lighting] " + _startupError);
         }
+        StudioLightingBridge.Attach(this);
     }
 
     public void OpenConfigDialog()
@@ -75,5 +76,9 @@ public sealed class Plugin : IPlugin, IDisposable
         _controller.SetEnabled(enabled);
     }
 
-    public void Dispose() => _controller?.Dispose();
+    public void Dispose()
+    {
+        StudioLightingBridge.Detach(this);
+        _controller?.Dispose();
+    }
 }
